@@ -1,0 +1,9 @@
+
+* {
+    font-size: small;
+}
+
+ .container-create {
+    overflow-y:hidden !important;
+    overflow-x:scroll !important;
+}
