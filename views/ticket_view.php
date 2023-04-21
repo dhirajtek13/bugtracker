@@ -24,7 +24,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tfoot>
+        <tfoot style="display:table-header-group">
             <tr>
                 <th>Ticket Id</th>
                 <th>Type</th>
@@ -41,6 +41,9 @@
                 <th></th>
             </tr>
         </tfoot>
+        <tbody>
+            
+        </tbody>
     </table>
 
     
