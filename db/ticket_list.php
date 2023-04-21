@@ -120,7 +120,8 @@ $columns = array(
         'db'        => 'planned_hrs', 
         'dt'        => 11, 
         'formatter' => function( $d, $row ) { 
-            return $row['planned_hrs'] - $row['actual_hrs'];// json_encode($row);
+            $variance = $row['planned_hrs'] - $row['actual_hrs'];// json_encode($row);
+            return ($variance != '0') ?  $variance : ''; 
         } 
     ), 
     array( 
