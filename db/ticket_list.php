@@ -44,6 +44,7 @@ EOT;
 //     ON tickets.c_status = c_status_types.id
 //     LEFT JOIN 	assignees
 //     ON tickets.assignee_id = assignees.id
+//      ORDER BY tickets.id DESC
 //  ) temp
 // EOT; 
  
@@ -54,9 +55,9 @@ $primaryKey = 'id';
 // The `db` parameter represents the column name in the database.  
 // The `dt` parameter represents the DataTables column identifier. 
 $columns = array( 
-    array( 'db' => 'type_id', 'dt' => -1 ), 
-    array( 'db' => 'c_status', 'dt' => -1 ), 
-    array( 'db' => 'assignee_id', 'dt' => -1 ), 
+    // array( 'db' => 'type_id', 'dt' => -1 ), 
+    // array( 'db' => 'c_status', 'dt' => -1 ), 
+    // array( 'db' => 'assignee_id', 'dt' => -1 ), 
 
     array( 'db' => 'ticket_id', 'dt' => 0 ), 
     array( 'db' => 'ticket_type',  'dt' => 1 ), 
@@ -119,15 +120,16 @@ $columns = array(
     array( 
         'db'        => 'planned_hrs', 
         'dt'        => 11, 
-        'formatter' => function( $d, $row ) { 
+        'formatter' => function( $d, $row ) {
             $variance = $row['planned_hrs'] - $row['actual_hrs'];// json_encode($row);
             return ($variance != '0') ?  $variance : ''; 
         } 
     ), 
     array( 
         'db'        => 'id', 
-        'dt'        => 12, 
+        'dt'        => 12,
         'formatter' => function( $d, $row ) { 
+            
             return ' 
                 <a href="javascript:void(0);" class="btn btn-warning" onclick="editData('.htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8').')">Edit</a>&nbsp; 
             '; 

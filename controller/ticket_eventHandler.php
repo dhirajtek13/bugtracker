@@ -11,8 +11,7 @@ $jsonObj = json_decode($jsonStr);
  
 if($jsonObj->request_type == 'addEditUser'){ 
     $user_data = $jsonObj->user_data;
-    // print_r($user_data);
-    // die();
+    // print_r($user_data); die();
     $ticket_id = !empty($user_data[0])?$user_data[0]:''; 
     $type_id = !empty($user_data[1])?$user_data[1]:''; 
     $c_status = !empty($user_data[2])?$user_data[2]:''; 
@@ -25,7 +24,7 @@ if($jsonObj->request_type == 'addEditUser'){
     $planned_hrs = !empty($user_data[9])?$user_data[9]:0;
     $actual_hrs = !empty($user_data[10])?$user_data[10]:0;
 
-    $id = !empty($user_data[6])?$user_data[11]:0; 
+    $id = !empty($user_data[11])?$user_data[11]:0; 
  
     $err = ''; 
     if(empty($ticket_id)){ 

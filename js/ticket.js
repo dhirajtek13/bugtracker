@@ -10,7 +10,7 @@ var table = $("#dataList").DataTable({
     },
   ],
   orderCellsTop: true,
-  fixedHeader: true,
+//   fixedHeader: true,
   initComplete: function () {
     // Apply the search
     this.api()
@@ -87,14 +87,19 @@ function addData() {
 }
 
 function editData(user_data) {
+    console.log(user_data);
     $(".frm-status").html("");
     $("#userModalLabel").html("Edit Ticket #" + user_data.ticket_id);
 
     $("#ticket_id").val(user_data.ticket_id);
 
-    $("#type_id").val(user_data.type_id);
-    $("#c_status").val(user_data.c_status);
-    $("#assignee_id").val(user_data.assignee_id);
+    $("#type_id option").filter(function() {return this.text == user_data.ticket_type ;}).attr('selected', true);
+    $("#c_status option").filter(function() {return this.text == user_data.c_type_name ;}).attr('selected', true);
+    $("#assignee_id option").filter(function() {return this.text == user_data.assignee ;}).attr('selected', true);
+
+    // $("#type_id").val(user_data.ticket_type);
+    // $("#c_status").val(user_data.c_status);
+    // $("#assignee_id").val(user_data.assignee_id);
   
     $("#assigned_date").val(user_data.assigned_date);
     $("#plan_start_date").val(user_data.plan_start_date);
