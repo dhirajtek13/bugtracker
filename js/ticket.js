@@ -63,63 +63,73 @@ $(document).ready(function () {
   //table.draw();
 });
 
+
+//Modal CRUD operations 
 function addData() {
   $(".frm-status").html("");
   $("#userModalLabel").html("Add New Ticket");
 
-  $("#userGender_1").prop("checked", true);
-  $("#userGender_2").prop("checked", false);
-  $("#userStatus_1").prop("checked", true);
-  $("#userStatus_2").prop("checked", false);
-  $("#userFirstName").val("");
-  $("#userLastName").val("");
-  $("#userEmail").val("");
-  $("#userCountry").val("");
-  $("#userID").val(0);
+  $("#ticket_id").val("");
+  $("#type_id").val(1);
+  $("#c_status").val(1);
+  $("#assignee_id").val(1);
+
+  $("#assigned_date").val("");
+  $("#plan_start_date").val("");
+  $("#plan_end_date").val("");
+  $("#actual_start_date").val("");
+  $("#actual_end_date").val("");
+
+  $("#planned_hrs").val("");
+  $("#actual_hrs").val("");
+
   $("#userDataModal").modal("show");
 }
 
 function editData(user_data) {
-  $(".frm-status").html("");
-  $("#userModalLabel").html("Edit User #" + user_data.id);
+    $(".frm-status").html("");
+    $("#userModalLabel").html("Edit Ticket #" + user_data.ticket_id);
 
-  if (user_data.gender == "Female") {
-    $("#userGender_1").prop("checked", false);
-    $("#userGender_2").prop("checked", true);
-  } else {
-    $("#userGender_2").prop("checked", false);
-    $("#userGender_1").prop("checked", true);
-  }
+    $("#ticket_id").val(user_data.ticket_id);
 
-  if (user_data.status == 1) {
-    $("#userStatus_2").prop("checked", false);
-    $("#userStatus_1").prop("checked", true);
-  } else {
-    $("#userStatus_1").prop("checked", false);
-    $("#userStatus_2").prop("checked", true);
-  }
+    $("#type_id").val(user_data.type_id);
+    $("#c_status").val(user_data.c_status);
+    $("#assignee_id").val(user_data.assignee_id);
+  
+    $("#assigned_date").val(user_data.assigned_date);
+    $("#plan_start_date").val(user_data.plan_start_date);
+    $("#plan_end_date").val(user_data.plan_end_date);
+    $("#actual_start_date").val(user_data.actual_start_date);
+    $("#actual_end_date").val(user_data.actual_end_date);
+  
+    $("#planned_hrs").val(user_data.planned_hrs);
+    $("#actual_hrs").val(user_data.actual_hrs);
 
-  $("#userFirstName").val(user_data.first_name);
-  $("#userLastName").val(user_data.last_name);
-  $("#userEmail").val(user_data.email);
-  $("#userCountry").val(user_data.country);
-  $("#userID").val(user_data.id);
-  $("#userDataModal").modal("show");
+    $('#ticketID').val(user_data.id);
+    $("#userDataModal").modal("show");
 }
 
 function submitUserData() {
   $(".frm-status").html("");
   let input_data_arr = [
-    document.getElementById("userFirstName").value,
-    document.getElementById("userLastName").value,
-    document.getElementById("userEmail").value,
-    document.querySelector('input[name="userGender"]:checked').value,
-    document.getElementById("userCountry").value,
-    document.querySelector('input[name="userStatus"]:checked').value,
-    document.getElementById("userID").value,
+    document.getElementById("ticket_id").value,
+    
+    document.querySelector('select[name="type_id"]').value,
+    document.querySelector('select[name="c_status"]').value,
+    document.querySelector('select[name="assignee_id"]').value,
+
+    document.getElementById("assigned_date").value,
+    document.getElementById("plan_start_date").value,
+    document.getElementById("plan_end_date").value,
+    document.getElementById("actual_start_date").value,
+    document.getElementById("actual_end_date").value,
+
+    document.getElementById("planned_hrs").value,
+    document.getElementById("actual_hrs").value,
+    document.getElementById('ticketID').value,
   ];
 
-  fetch("eventHandler.php", {
+  fetch("controller/ticket_eventHandler.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -153,6 +163,7 @@ function submitUserData() {
     .catch(console.error);
 }
 
+//TODO 
 function deleteData(user_id) {
   Swal.fire({
     title: "Are you sure to Delete?",

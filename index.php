@@ -1,6 +1,5 @@
 
 <?php include "db/config.php"; ?>
-<?php include "db/dbConnect.php"; ?>
 
 <!-- Fetch type, status, assignee dropdown -->
 <?php include "db/fetch_dropdown_data.php"; ?>

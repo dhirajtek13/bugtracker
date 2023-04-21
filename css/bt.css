@@ -7,3 +7,6 @@
     overflow-y:hidden !important;
     overflow-x:scroll !important;
 }
+.required_mark {
+    color:red;
+}

@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-sm">
                                 <div class="mb-3">
-                                    <label for="userFirstName" class="form-label">Ticket Id</label>
+                                    <label for="userFirstName" class="form-label">Ticket Id <span class="required_mark">*</span></label>
                                     <input type="text" class="form-control" id="ticket_id" placeholder="Enter Ticket Id">
                                 </div>
                                 <div class="mb-3">
@@ -59,7 +59,7 @@
                                     <input type="number" class="form-control" id="planned_hrs" placeholder="00.0">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="actual_hrs" class="form-label">Actual Date</label>
+                                    <label for="actual_hrs" class="form-label">Actual Hours</label>
                                     <input type="number" class="form-control" id="actual_hrs" placeholder="00.0">
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" id="userID" value="0">
+                    <input type="hidden" id="ticketID" value="0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" onclick="submitUserData()">Submit</button>
                 </div>
