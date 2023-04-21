@@ -10,10 +10,10 @@
         <a class="nav-link ticket_nav active" href="/">View Tickets</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link log_nav" href="/log_view.php">View Logs</a>
+        <a class="nav-link log_nav" href="/log.php">View Logs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link timings_nav" href="/log_timings.php">View Timings</a>
+        <a class="nav-link timings_nav" href="/timings.php">View Timings</a>
       </li>
       <li class="nav-item">
         <a class="nav-link dashboard_nav" href="/dashboard.php">Dashboard</a>

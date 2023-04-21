@@ -59,7 +59,13 @@ $columns = array(
     // array( 'db' => 'c_status', 'dt' => -1 ), 
     // array( 'db' => 'assignee_id', 'dt' => -1 ), 
 
-    array( 'db' => 'ticket_id', 'dt' => 0 ), 
+    array( 
+        'db' => 'ticket_id', 
+        'dt' => 0, 
+        'formatter' => function ($d, $row){
+            return '<a href="/log.php?ticket='.$d.'"  >'.$d.'</a>'; 
+        }
+    ), 
     array( 'db' => 'ticket_type',  'dt' => 1 ), 
     array( 'db' => 'c_type_name',      'dt' => 2 ), 
     array( 'db' => 'assignee',     'dt' => 3 ), 
