@@ -2,6 +2,8 @@
 var table = $("#dataList").DataTable({
   processing: true,
   serverSide: true,
+  bLengthChange: false,
+  bFilter:false,
   ajax: "db/ticket_list.php",
   columnDefs: [
     {

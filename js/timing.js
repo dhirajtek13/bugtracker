@@ -5,11 +5,11 @@
 var table = $("#dataList").DataTable({
   processing: true,
   serverSide: true,
-  ajax: "db/log_list.php?ticket="+$("#ticketId").val(),
+  ajax: "db/timing_list.php?ticket="+$("#ticketId").val(),
   columnDefs: [
     {
       orderable: true,
-      targets: 6,
+      targets: 5,
     },
   ],
   orderCellsTop: true,
@@ -38,21 +38,11 @@ $(document).ready(function () {
           '<input type="text" placeholder="' + title + '"  size="8"/>'
         );
       });
-
-      //get ticketId 
-      
-      
-
-
-      
-
-      // Initialize DataTables API object and configure table
-
 });
 
 
 //Modal CRUD operations 
-function addData() {
+function addData() {//TODO
   $(".frm-status").html("");
   $("#userModalLabel").html("Add New Log");
 
@@ -67,7 +57,7 @@ function addData() {
   $("#userDataModal").modal("show");
 }
 
-function editData(user_data) {
+function editData(user_data) {//TODO
     $(".frm-status").html("");
 
     $("#userModalLabel").html("Edit Log ");
@@ -85,7 +75,7 @@ function editData(user_data) {
     $("#userDataModal").modal("show");
 }
 
-function submitUserData() {
+function submitUserData() {//TODO
   $(".frm-status").html("");
   let input_data_arr = [
     document.getElementById("ticket_id").value,
@@ -136,8 +126,8 @@ function submitUserData() {
     .catch(console.error);
 }
 
-
-function deleteData(user_id) {
+//TODO 
+function deleteData(user_id) {//TODO
   Swal.fire({
     title: "Are you sure to Delete?",
     text: "You won't be able to revert this!",

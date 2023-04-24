@@ -41,6 +41,9 @@ if($jsonObj->request_type == 'addEdit'){
             $update = $stmt->execute(); 
  
             if($update){ 
+                //Also add in the log_timings
+                addTiming($conn, $ticket_id, USERID,  $c_status, 'UPDATE_LOG');
+
                 $output = [ 
                     'status' => 1, 
                     'msg' => 'Ticket updated successfully!' 
@@ -97,4 +100,15 @@ if($jsonObj->request_type == 'addEdit'){
     }else{ 
         echo json_encode(['error' => 'Member Delete request failed!']); 
     } 
+}
+
+
+function addTiming($conn, $ticket_id, $user_id,  $ticket_status, $activity_type) {
+
+    $sqlQ = "INSERT INTO log_timing (ticket_id,user_id, ticket_status,activity_type)
+                VALUES (?,?,?,?)"; 
+                $stmt = $conn->prepare($sqlQ); 
+                $stmt->bind_param("iiis", $ticket_id, $user_id,  $ticket_status, $activity_type); 
+                $insert = $stmt->execute();
+                //TODO return and handle return
 }

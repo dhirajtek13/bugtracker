@@ -2,6 +2,7 @@
 
 define('BASE_PATH', 'http://bt.local'); 
 define('SITE_NAME', 'BugTracker'); 
+define('USERID', '1'); //temporay value as long there is no login system
 
 // Database credentials 
 define('DB_HOST', 'localhost'); 

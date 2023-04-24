@@ -10,6 +10,8 @@
     <script src="./libraries/js/jquery-3.6.4.min.js"  crossorigin="anonymous"></script>
     
     <link rel="stylesheet" href="./css/bt.css" >
+    <link rel="stylesheet" href="./css/mateial-icons.css" >
+
     
     <link rel="stylesheet" type="text/css" href="./libraries/DataTables/jquery.dataTables.min.css"/>
     <script type="text/javascript" src="./libraries/DataTables/jquery.dataTables.min.js"></script>
