@@ -2,77 +2,61 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="userModalLabel">Add New Ticket</h1>
+                <h1 class="modal-title fs-5" id="userModalLabel">Add New Log</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form name="userDataFrm" id="userDataFrm">
-                <div class="modal-body">
-                    <div class="frm-status"></div>
+            <div class="container">
+                <form name="userDataFrm" id="userDataFrm">
+                    <div class="modal-body">
+                            <div class="frm-status"></div>
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm">
-                                <div class="mb-3">
-                                    <label for="userFirstName" class="form-label">Ticket Id <span class="required_mark">*</span></label>
-                                    <input type="text" class="form-control" id="ticket_id" placeholder="Enter Ticket Id">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="mb-12 ">
+                                        <label for="ticket_id" class="form-label">Ticket Id</label>
+                                        <?php echo $ticket_input_html ; ?>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="type_id" class="form-label">Type</label>
-                                    <?php print_r($ticket_types_row); ?>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-4">
+                                    <label for="dates" class="form-label">Dates</label>
+                                    <input type="datetime-local" name="dates" id="dates" class="form-control">
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-4">
+                                    <label for="hrs" class="form-label">Hours</label>
+                                    <input type="number" class="form-control" id="hrs" name="hrs" placeholder="00.0">
+                                </div>
+                                <div class="col-4">
                                     <label for="c_status" class="form-label">C.Status</label>
-                                    <?php  print_r($c_status_types_row); ?>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="assignee_id" class="form-label">Assignee</label>
-                                    <?php  print_r($assignees_row); ?>
+                                    <?php print_r($c_status_types_row); ?>
                                 </div>
                             </div>
 
-
-                            <div class="col-sm">
-                                <div class="mb-3">
-                                    <label for="assigned_date" class="form-label">Assigned Date</label>
-                                   <input type="datetime-local" name="assigned_date" id="assigned_date" class="form-control">
+                            <div class="row mt-3">
+                                <div class="form-group mt-2">
+                                    <!-- <label for="what_is_done">What is Done</label> -->
+                                    <textarea placeholder="What is Done...." name="what_is_done"  id="what_is_done"  class="form-control"  rows="3"></textarea>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="plan_start_date" class="form-label">Plan Start Date</label>
-                                    <input type="datetime-local" name="plan_start_date" id="plan_start_date" class="form-control">
+                                <div class="form-group mt-2">
+                                    <!-- <label for="what_is_pending">What is pending</label> -->
+                                    <textarea placeholder="What is pending...." name="what_is_pending"  id="what_is_pending" class="form-control"  rows="3"></textarea>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="plan_end_date" class="form-label">Plan End Date</label>
-                                    <input type="datetime-local" name="plan_end_date" id="plan_end_date" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="actual_start_date" class="form-label">Actual Start Date</label>
-                                    <input type="datetime-local" name="actual_start_date" id="actual_start_date" class="form-control">
+                                <div class="form-group mt-2">
+                                    <!-- <label for="what_support_required">What support is required</label> -->
+                                    <textarea placeholder="What support is required...." name="what_support_required"  id="what_support_required" class="form-control" rows="3" ></textarea>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                                <div class="mb-3">
-                                    <label for="actual_end_date" class="form-label">Actual End Date</label>
-                                    <input type="datetime-local" name="actual_end_date" id="actual_end_date" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="planned_hrs" class="form-label">Planned Hours</label>
-                                    <input type="number" class="form-control" id="planned_hrs" placeholder="00.0">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="actual_hrs" class="form-label">Actual Hours</label>
-                                    <input type="number" class="form-control" id="actual_hrs" placeholder="00.0">
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" id="ticketID" value="0">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="submitUserData()">Submit</button>
-                </div>
-            </form>
+                    
+                    <div class="modal-footer">
+                        <input type="hidden" id="editID" value="0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="submitUserData()">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

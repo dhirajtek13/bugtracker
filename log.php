@@ -3,6 +3,7 @@
 
 <!-- Fetch type, status, assignee dropdown -->
 <?php include "db/fetch_dropdown_data.php"; ?>
+<?php include "db/fetch_ticket_data.php"; ?>
 
 <?php include "views/layouts/header.php"; ?>
 

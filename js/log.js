@@ -47,50 +47,34 @@ $(document).ready(function () {
 //Modal CRUD operations 
 function addData() {
   $(".frm-status").html("");
-  $("#userModalLabel").html("Add New Ticket");
+  $("#userModalLabel").html("Add New Log");
 
-  $("#ticket_id").val("");
-  $("#type_id").val(1);
+  // $("#ticket_id").val("");
+  $("#dates").val("");
+  $("#hrs").val("");
   $("#c_status").val(1);
-  $("#assignee_id").val(1);
-
-  $("#assigned_date").val("");
-  $("#plan_start_date").val("");
-  $("#plan_end_date").val("");
-  $("#actual_start_date").val("");
-  $("#actual_end_date").val("");
-
-  $("#planned_hrs").val("");
-  $("#actual_hrs").val("");
+  $("#what_is_done").val("");
+  $("#what_is_pending").val("");
+  $("#what_support_required").val("");
 
   $("#userDataModal").modal("show");
 }
 
 function editData(user_data) {
-    console.log(user_data);
     $(".frm-status").html("");
-    $("#userModalLabel").html("Edit Ticket #" + user_data.ticket_id);
 
-    $("#ticket_id").val(user_data.ticket_id);
+    $("#userModalLabel").html("Edit Log ");
 
-    $("#type_id option").filter(function() {return this.text == user_data.ticket_type ;}).attr('selected', true);
+    // $("#ticket_id").val(user_data.ticket_id);
+
     $("#c_status option").filter(function() {return this.text == user_data.c_type_name ;}).attr('selected', true);
-    $("#assignee_id option").filter(function() {return this.text == user_data.assignee ;}).attr('selected', true);
+    $("#dates").val(user_data.dates);
+    $("#hrs").val(user_data.hrs);
+    $("#what_is_done").val(user_data.what_is_done);
+    $("#what_is_pending").val(user_data.what_is_pending);
+    $("#what_support_required").val(user_data.what_support_required);
 
-    // $("#type_id").val(user_data.ticket_type);
-    // $("#c_status").val(user_data.c_status);
-    // $("#assignee_id").val(user_data.assignee_id);
-  
-    $("#assigned_date").val(user_data.assigned_date);
-    $("#plan_start_date").val(user_data.plan_start_date);
-    $("#plan_end_date").val(user_data.plan_end_date);
-    $("#actual_start_date").val(user_data.actual_start_date);
-    $("#actual_end_date").val(user_data.actual_end_date);
-  
-    $("#planned_hrs").val(user_data.planned_hrs);
-    $("#actual_hrs").val(user_data.actual_hrs);
-
-    $('#ticketID').val(user_data.id);
+    $('#editID').val(user_data.id);
     $("#userDataModal").modal("show");
 }
 
@@ -98,29 +82,26 @@ function submitUserData() {
   $(".frm-status").html("");
   let input_data_arr = [
     document.getElementById("ticket_id").value,
-    
-    document.querySelector('select[name="type_id"]').value,
+    document.getElementById("ticket").value,
+
+    document.getElementById("dates").value,
+    document.getElementById("hrs").value,
     document.querySelector('select[name="c_status"]').value,
-    document.querySelector('select[name="assignee_id"]').value,
+    
+    document.getElementById("what_is_done").value,
+    document.getElementById("what_is_pending").value,
+    document.getElementById("what_support_required").value,
 
-    document.getElementById("assigned_date").value,
-    document.getElementById("plan_start_date").value,
-    document.getElementById("plan_end_date").value,
-    document.getElementById("actual_start_date").value,
-    document.getElementById("actual_end_date").value,
-
-    document.getElementById("planned_hrs").value,
-    document.getElementById("actual_hrs").value,
-    document.getElementById('ticketID').value,
+    document.getElementById('editID').value,
   ];
 
-  fetch("controller/ticket_eventHandler.php", {
+  fetch("controller/log_eventHandler.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      request_type: "addEditUser",
+      request_type: "addEdit",
       user_data: input_data_arr,
     }),
   })

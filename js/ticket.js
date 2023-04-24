@@ -117,7 +117,7 @@ function editData(user_data) {
     $("#planned_hrs").val(user_data.planned_hrs);
     $("#actual_hrs").val(user_data.actual_hrs);
 
-    $('#ticketID').val(user_data.id);
+    $('#editID').val(user_data.id);
     $("#userDataModal").modal("show");
 }
 
@@ -138,7 +138,7 @@ function submitUserData() {
 
     document.getElementById("planned_hrs").value,
     document.getElementById("actual_hrs").value,
-    document.getElementById('ticketID').value,
+    document.getElementById('editID').value,
   ];
 
   fetch("controller/ticket_eventHandler.php", {
@@ -147,7 +147,7 @@ function submitUserData() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      request_type: "addEditUser",
+      request_type: "addEdit",
       user_data: input_data_arr,
     }),
   })

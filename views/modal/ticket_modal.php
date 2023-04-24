@@ -68,7 +68,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" id="ticketID" value="0">
+                    <input type="hidden" id="editID" value="0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" onclick="submitUserData()">Submit</button>
                 </div>

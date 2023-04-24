@@ -9,7 +9,7 @@ require_once '../db/config.php';
 $jsonStr = file_get_contents('php://input'); 
 $jsonObj = json_decode($jsonStr); 
  
-if($jsonObj->request_type == 'addEditUser'){ 
+if($jsonObj->request_type == 'addEdit'){ 
     $user_data = $jsonObj->user_data;
     // print_r($user_data); die();
     $ticket_id = !empty($user_data[0])?$user_data[0]:''; 
