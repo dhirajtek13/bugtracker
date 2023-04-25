@@ -1,8 +1,9 @@
-<h2>Tickets</h2>
+
 
     <!-- Add button -->
     <div class="top-panel">
-        <a href="javascript:void(0);" class="btn btn-primary my-2" onclick="addData()">Add New Ticket</a>
+        <h2>Tickets</h2>
+        <a href="javascript:void(0);" class="btn btn-primary my-2 float-right" onclick="addData()">Add New Ticket</a>
     </div>
     <!-- Data list table -->
     <table id="dataList" class="display" style="width:100%">

@@ -1,7 +1,7 @@
 
-* {
+/* * {
     font-size: small;
-}
+} */
 
  .container-create {
     overflow-y:hidden !important;
@@ -10,3 +10,7 @@
 .required_mark {
     color:red;
 }
+/* .navbar {
+    width: max-content;
+} */
+

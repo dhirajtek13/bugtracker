@@ -42,7 +42,8 @@ if($jsonObj->request_type == 'addEdit'){
  
             if($update){ 
                 //Also add in the log_timings
-                addTiming($conn, $ticket_id, USERID,  $c_status, 'UPDATE_LOG');
+                //TODO - using assignee_id as of now instead of logged in user
+                addTiming($conn, $id, $assignee_id,  $c_status, 'UPDATE_TICKET');
 
                 $output = [ 
                     'status' => 1, 
@@ -72,7 +73,11 @@ if($jsonObj->request_type == 'addEdit'){
                 $stmt->bind_param("siiisssssdd", $ticket_id, $type_id, $c_status, $assignee_id, $assigned_date, $plan_start_date, $plan_end_date, $actual_start_date, $actual_end_date, $planned_hrs, $actual_hrs); 
                 $insert = $stmt->execute(); 
 
+
                 if ($insert) { 
+
+                    //TODO - using assignee_id as of now instead of logged in user
+                    // addTiming($conn, $ticket_id, $assignee_id,  $c_status, 'ADD_TICKET');
                     $output = [ 
                         'status' => 1, 
                         'msg' => 'Ticket added successfully!' 
@@ -105,7 +110,7 @@ if($jsonObj->request_type == 'addEdit'){
 
 function addTiming($conn, $ticket_id, $user_id,  $ticket_status, $activity_type) {
 
-    $sqlQ = "INSERT INTO log_timing (ticket_id,user_id, ticket_status,activity_type)
+    $sqlQ = "INSERT INTO log_timing (ticket_id,user_id, c_status,activity_type)
                 VALUES (?,?,?,?)"; 
                 $stmt = $conn->prepare($sqlQ); 
                 $stmt->bind_param("iiis", $ticket_id, $user_id,  $ticket_status, $activity_type); 

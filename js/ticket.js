@@ -3,11 +3,11 @@ var table = $("#dataList").DataTable({
   processing: true,
   serverSide: true,
   bLengthChange: false,
-  bFilter:false,
+  // bFilter:false,
   ajax: "db/ticket_list.php",
   columnDefs: [
     {
-      orderable: true,
+      orderable: false,
       targets: 12,
     },
   ],
@@ -65,9 +65,11 @@ $(document).ready(function () {
     // Setup - add a text input to each footer cell
       $("#dataList tfoot th").each(function () {
         var title = $(this).text();
-        $(this).html(
-          '<input type="text" placeholder="' + title + '"  size="8"/>'
-        );
+        if(title) {
+          $(this).html(
+            '<input type="text" placeholder=""  size="5"/ >'
+          );
+        }
       });
 
 });

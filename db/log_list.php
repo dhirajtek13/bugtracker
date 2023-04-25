@@ -85,10 +85,13 @@ $columns = array(
         'db'        => 'id', 
         'dt'        => 6,
         'formatter' => function( $d, $row ) { 
-            
             return ' 
-                <a href="javascript:void(0);" class="btn btn-warning" onclick="editData('.htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8').')">Edit</a>&nbsp; 
-                <a href="javascript:void(0);" class="btn btn-danger" onclick="deleteData('.$d.')">Delete</a>
+                <a href="javascript:void(0);" class="edit" data-toggle="modal"  onclick="editData('.htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8').')">
+                    <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                </a>&nbsp;
+                <a href="javascript:void(0);"  class="delete" data-toggle="modal" onclick="deleteData('.$d.')">
+                    <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                </a>
                 
             '; 
         } 

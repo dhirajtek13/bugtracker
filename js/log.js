@@ -5,10 +5,12 @@
 var table = $("#dataList").DataTable({
   processing: true,
   serverSide: true,
+  bLengthChange: false, //hide pagination filter dropdown
+  // bFilter:false,//hide search bar //ISSUE: this also disable individual search functionality
   ajax: "db/log_list.php?ticket="+$("#ticketId").val(),
   columnDefs: [
     {
-      orderable: true,
+      orderable: false,
       targets: 6,
     },
   ],
@@ -34,9 +36,11 @@ $(document).ready(function () {
     // Setup - add a text input to each footer cell
       $("#dataList tfoot th").each(function () {
         var title = $(this).text();
-        $(this).html(
-          '<input type="text" placeholder="' + title + '"  size="8"/>'
-        );
+        if(title) {
+          $(this).html(
+            '<input type="text" placeholder="' + title + '"  size="8"/>'
+          );
+        }
       });
 
       //get ticketId 

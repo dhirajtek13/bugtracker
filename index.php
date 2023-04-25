@@ -5,8 +5,13 @@
 <?php include "db/fetch_dropdown_data.php"; ?>
 
 <?php include "views/layouts/header.php"; ?>
+<style>
+* {
+    font-size: x-small;
+}
+</style>
 
-<div class="container my-5">
+<div class="container my-5 ">
     
     <!-- Table HTML -->
     <?php include "views/ticket_view.php"; ?>

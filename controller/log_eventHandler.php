@@ -40,6 +40,7 @@ if($jsonObj->request_type == 'addEdit'){
  
             if($update){ 
                 //Also add in the log_timings
+                //TODO - get the logged in user / ticket assigned user
                 addTiming($conn, $ticket_id, USERID,  $c_status, 'UPDATE_LOG');
                 $output = [ 
                     'status' => 1, 
@@ -103,7 +104,7 @@ if($jsonObj->request_type == 'addEdit'){
 
 function addTiming($conn, $ticket_id, $user_id,  $ticket_status, $activity_type) {
 
-    $sqlQ = "INSERT INTO log_timing (ticket_id,user_id, ticket_status,activity_type)
+    $sqlQ = "INSERT INTO log_timing (ticket_id,user_id, c_status,activity_type)
                 VALUES (?,?,?,?)"; 
                 $stmt = $conn->prepare($sqlQ); 
                 $stmt->bind_param("iiis", $ticket_id, $user_id,  $ticket_status, $activity_type); 
